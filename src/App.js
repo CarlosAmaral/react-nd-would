@@ -4,6 +4,8 @@ import './App.css';
 import {Layout, Menu, Breadcrumb} from 'antd';
 import 'antd/dist/antd.css'
 import LoginComponent from "./components/LoginComponent";
+import * as WYRAPI from './utils/WouldYouRatherAPI';
+
 const {Header, Content, Footer} = Layout;
 
 class App extends Component {
@@ -25,7 +27,7 @@ class App extends Component {
                             <Menu.Item key="5">Logout</Menu.Item>
                         </Menu>
                     </Header>
-                    <Content style={{padding: '0 50px'}}>
+                    <Content style={{margin: 'auto'}}>
                         <LoginComponent/>
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
