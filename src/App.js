@@ -1,24 +1,27 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
 import {Layout, Menu, Breadcrumb} from 'antd';
-import 'antd/dist/antd.css'
+import PropTypes from 'prop-types';
 import LoginComponent from "./components/LoginComponent";
-import * as WYRAPI from './utils/WouldYouRatherAPI';
 import {connect, Provider} from 'react-redux';
 import HeaderComponent from "./components/HeaderComponent";
+import {getUsersFromServer} from './actions/usersActions';
 
 const {Header, Content, Footer} = Layout;
 
 class App extends Component {
 
     componentDidMount() {
-
+        this.props.getUsersFromServer();
     }
 
     render() {
         return (
             <div className="App">
+                <div><ul>
+                    {this.props.users.map(m => <li>{m.name}</li>)}
+                </ul></div>
                 <Layout className="layout">
                     <Header>
                         <HeaderComponent/>
@@ -35,14 +38,18 @@ class App extends Component {
     }
 }
 
-
-function mapStateToProps(state) {
-    //return {...state}
+App.propTypes = {
+    getUsersFromServer: PropTypes.func.isRequired
 }
+
+const mapStateToProps = state => ({
+    users: Object.values(state.users.items)
+});
 
 function mapDispatchToProps(dispatch) {
     //return bindActionCreators(actionCreators, dispatch);
 }
 
 
-export default connect(mapDispatchToProps, mapStateToProps)(App);
+//export default connect(mapDispatchToProps, mapStateToProps)(App);
+export default connect(mapStateToProps, {getUsersFromServer})(App);

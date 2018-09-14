@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/reducers/userReducer.js" line="3" mnemonic="7" />
+    <bookmark url="file://$PROJECT_DIR$/src/actions/usersActions.js" line="7" mnemonic="7" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0626f03-e565-4cf1-adc0-12d2c3cea576" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/usersActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HeaderComponent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/userReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/helpers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/usersActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/usersActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/usersReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/WouldYouRatherAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/WouldYouRatherAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
@@ -32,7 +27,7 @@
     <session id="-226282902">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.13" value="1" />
@@ -48,7 +43,7 @@
         <counts>
           <entry key="gitignore" value="1" />
           <entry key="html" value="1" />
-          <entry key="js" value="17" />
+          <entry key="js" value="20" />
           <entry key="json" value="1" />
           <entry key="ts" value="1" />
         </counts>
@@ -58,20 +53,20 @@
           <entry key="Git file" value="1" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="17" />
+          <entry key="JavaScript" value="20" />
           <entry key="TypeScript" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="6" />
-          <entry key="js" value="1477" />
+          <entry key="js" value="2144" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Git file" value="6" />
-          <entry key="JavaScript" value="1477" />
+          <entry key="JavaScript" value="2144" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -83,13 +78,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,22 +115,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/usersActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+            <state relative-caret-position="45">
+              <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -132,10 +127,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/userReducer.js">
+        <entry file="file://$PROJECT_DIR$/src/utils/WouldYouRatherAPI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+            <state relative-caret-position="75">
+              <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -148,6 +143,15 @@
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reducers/usersReducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -172,9 +176,7 @@
         <option value="$PROJECT_DIR$/src/components/LoginComponent.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/createStore.js" />
-        <option value="$PROJECT_DIR$/src/utils/WouldYouRatherAPI.js" />
         <option value="$PROJECT_DIR$/src/utils/helpers.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/HeaderComponent.js" />
         <option value="$PROJECT_DIR$/src/actions/users.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
@@ -182,8 +184,11 @@
         <option value="$PROJECT_DIR$/src/store.js" />
         <option value="$PROJECT_DIR$/src/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/actions/types.js" />
-        <option value="$PROJECT_DIR$/src/actions/usersActions.js" />
         <option value="$PROJECT_DIR$/src/reducers/userReducer.js" />
+        <option value="$PROJECT_DIR$/src/reducers/usersReducer.js" />
+        <option value="$PROJECT_DIR$/src/utils/WouldYouRatherAPI.js" />
+        <option value="$PROJECT_DIR$/src/actions/usersActions.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
   </component>
@@ -210,7 +215,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -330,12 +335,12 @@
       <workItem from="1536398482767" duration="3089000" />
       <workItem from="1536844396038" duration="1871000" />
       <workItem from="1536862586271" duration="1528000" />
-      <workItem from="1536902397720" duration="1293000" />
+      <workItem from="1536902397720" duration="4450000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14119000" />
+    <option name="totallyTimeSpent" value="17276000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -361,9 +366,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32959184" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32959184" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32959184" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.28061223" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.28061223" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -407,27 +412,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/WouldYouRatherAPI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/_DATA.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1965">
           <caret line="131" column="1" selection-start-line="131" selection-start-column="1" selection-end-line="131" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -456,20 +444,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/usersActions.js">
+    <entry file="file://$PROJECT_DIR$/src/store.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        <state relative-caret-position="135">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
           <folding>
-            <element signature="e#0#59#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/userReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -483,6 +464,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/usersReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HeaderComponent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -493,22 +491,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store.js">
+    <entry file="file://$PROJECT_DIR$/src/utils/WouldYouRatherAPI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        <state relative-caret-position="75">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/usersActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
+    <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        <state relative-caret-position="630">
+          <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

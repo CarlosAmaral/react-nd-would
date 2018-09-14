@@ -1,16 +1,18 @@
 import {GET_USERS, LOGIN_USER, LOGOUT_USER} from '../actions/types';
 
 const initialState = {
-    users:[],
-    user:{}
-}
+    items:[],
+    item:{}
+};
+
 
 export default function usersReducer(state = initialState, action) {
     switch (action.type) {
         case 'GET_USERS':
+            console.log('getusers');
             return {
                 ...state,
-                users: action.payload
+                items: action.payload
             };
 
         case 'LOGIN_USER':
