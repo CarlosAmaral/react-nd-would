@@ -1,11 +1,11 @@
-import * as Backend from './_DATA';
+import * as server from './_DATA';
 
 
-export const getQuestions = () => Backend._getQuestions().then(res => console.log(res));
+export const getQuestions = () => server._getQuestions().then(res => console.log(res));
 
-export const getUsers = () => Backend._getUsers().then(res => console.log(res));
+export const getUsers = () => server._getUsers().then(res => console.log(res));
 
-export const saveQuestions = (q) => Backend._saveQuestion(q).then(res => console.log(res));
+export const saveQuestions = (q) => server._saveQuestion(q).then(res => console.log(res));
 
-export const saveQuestionAnswer = (obj) => Backend._saveQuestionAnswer(obj).then(res => console.log(res));
+export const saveQuestionAnswer = (obj) => server._saveQuestionAnswer(obj).then(res => console.log(res));
 
