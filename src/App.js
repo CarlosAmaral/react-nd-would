@@ -7,27 +7,42 @@ import LoginComponent from "./components/LoginComponent";
 import {connect, Provider} from 'react-redux';
 import HeaderComponent from "./components/HeaderComponent";
 import {getUsersFromServer} from './actions/usersActions';
+import { BrowserRouter,Router,Route } from 'react-router-dom'
+import {history} from './store';
 
 const {Header, Content, Footer} = Layout;
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            menuItem: 0
+        }
+    }
 
     componentDidMount() {
         this.props.getUsersFromServer();
     }
 
+    handleMenuItems = (item, key) => this.setState({menuItem: item.key});
+
+
     render() {
+        const {menuItem} = this.state;
+
         return (
             <div className="App">
-                <div><ul>
-                    {this.props.users.map(m => <li>{m.name}</li>)}
-                </ul></div>
                 <Layout className="layout">
                     <Header>
-                        <HeaderComponent/>
+                        <HeaderComponent menuItems={this.handleMenuItems}/>
                     </Header>
                     <Content style={{margin: 'auto'}}>
-                        <LoginComponent/>
+                        <BrowserRouter>
+                            <div>
+                                <Route path='/login' component={LoginComponent} />
+                                <Route path='/create-question' component={LoginComponent} />
+                            </div>
+                        </BrowserRouter>
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
                         Ant Design ©2018 Created by Ant UED
@@ -39,8 +54,9 @@ class App extends Component {
 }
 
 App.propTypes = {
-    getUsersFromServer: PropTypes.func.isRequired
-}
+    getUsersFromServer: PropTypes.func.isRequired,
+    users: PropTypes.array.isRequired
+};
 
 const mapStateToProps = state => ({
     users: Object.values(state.users.items)
@@ -50,6 +66,4 @@ function mapDispatchToProps(dispatch) {
     //return bindActionCreators(actionCreators, dispatch);
 }
 
-
-//export default connect(mapDispatchToProps, mapStateToProps)(App);
 export default connect(mapStateToProps, {getUsersFromServer})(App);
