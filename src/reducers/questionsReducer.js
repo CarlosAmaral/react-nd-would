@@ -14,7 +14,10 @@ export default function questionsReducer(state = initialState, action) {
                 items: action.payload
             };
         case 'POST_QUESTIONS':
-            return {...state};
+            return {
+                ...state,
+                items: action.payload
+            };
         default:
             return state;
     }

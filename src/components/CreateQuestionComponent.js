@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {Form, Input, Button, Checkbox, Card, Divider} from "antd";
+import connect from "react-redux";
+import {getUsersFromServer} from "../actions/usersActions";
+import PropTypes from 'prop-types';
 
 const FormItem = Form.Item;
 
@@ -60,4 +63,14 @@ class CreateQuestionFormComponent extends Component {
 
 const CreateQuestionComponent = Form.create()(CreateQuestionFormComponent);
 
-export default CreateQuestionComponent;
+const mapStateToProps = state => ({
+    questions: Object.values(state.questions.items)
+});
+
+CreateQuestionComponent.propTypes = {
+    getUsersFromServer: PropTypes.func.isRequired,
+    questions: PropTypes.array.isRequired
+};
+
+
+export default connect(mapStateToProps, {getUsersFromServer})(CreateQuestionComponent);
