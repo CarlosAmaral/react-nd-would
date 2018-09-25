@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Form, Input, Button, Checkbox, Card} from "antd";
+import {Form, Input, Button, Checkbox, Card, Divider} from "antd";
 
 const FormItem = Form.Item;
 
@@ -7,7 +7,11 @@ class CreateQuestionFormComponent extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            }
+        });
     };
 
     render() {
@@ -17,7 +21,7 @@ class CreateQuestionFormComponent extends Component {
                 <Card title="Create New Question">
 
                     <h5>Complete the question</h5>
-                    <h2>Would you Rather</h2>
+                    <h3>Would you Rather</h3>
                     <Form onSubmit={this.handleSubmit}>
                         <FormItem>
                             {getFieldDecorator('optionOne', {
@@ -29,7 +33,9 @@ class CreateQuestionFormComponent extends Component {
                                 <Input placeholder="Enter Option One"/>
                             )}
                         </FormItem>
-                        <hr>OR</hr>
+
+                        <Divider>Or</Divider>
+                       {/* <hr>OR</hr>*/}
                         <FormItem>
                             {getFieldDecorator('optionTwo', {
                                 rules: [{

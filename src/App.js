@@ -7,8 +7,8 @@ import LoginComponent from "./components/LoginComponent";
 import {connect, Provider} from 'react-redux';
 import HeaderComponent from "./components/HeaderComponent";
 import {getUsersFromServer} from './actions/usersActions';
-import { BrowserRouter,Router,Route } from 'react-router-dom'
-import {history} from './store';
+import {Switch, Route, BrowserRouter} from 'react-router-dom'
+import CreateQuestionComponent from "./components/CreateQuestionComponent";
 
 const {Header, Content, Footer} = Layout;
 
@@ -34,14 +34,18 @@ class App extends Component {
             <div className="App">
                 <Layout className="layout">
                     <Header>
-                        <HeaderComponent menuItems={this.handleMenuItems}/>
+                        <div><HeaderComponent menuItems={this.handleMenuItems}/></div>
                     </Header>
                     <Content style={{margin: 'auto'}}>
                         <BrowserRouter>
-                            <div>
-                                <Route path='/login' component={LoginComponent} />
-                                <Route path='/create-question' component={LoginComponent} />
-                            </div>
+                        <Switch>
+                            <Route exact path='/' render={() => (
+                                <LoginComponent/>
+                            )}/>
+                            <Route exact path='/create-question' render={() => (
+                                <CreateQuestionComponent/>
+                            )}/>
+                        </Switch>
                         </BrowserRouter>
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
