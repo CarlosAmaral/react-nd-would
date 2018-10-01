@@ -2,7 +2,8 @@ import {GET_USERS, LOGIN_USER, LOGOUT_USER} from '../actions/types';
 
 const initialState = {
     items:[],
-    item:{}
+    item:{},
+    loggedInUser: ""
 };
 
 
@@ -15,9 +16,15 @@ export default function usersReducer(state = initialState, action) {
             };
 
         case 'LOGIN_USER':
-            return {...state};
+            return {
+                ...state,
+                loggedInUser: action.payload
+            };
         case 'LOGOUT_USER':
-            return {...state};
+            return {
+                ...state,
+                loggedInUser: ""
+            };
         default:
             return state;
     }
