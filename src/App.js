@@ -6,9 +6,10 @@ import PropTypes from 'prop-types';
 import LoginComponent from "./components/LoginComponent";
 import { connect, Provider } from 'react-redux';
 import HeaderComponent from "./components/HeaderComponent";
+import HomepageComponent from "./components/HomepageComponent";
+import CreateQuestionComponent from "./components/CreateQuestionComponent";
 import { getUsersFromServer } from './actions/usersActions';
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
-import CreateQuestionComponent from "./components/CreateQuestionComponent";
 
 const { Header, Content, Footer } = Layout;
 
@@ -31,30 +32,36 @@ class App extends Component {
         const { menuItem } = this.state;
 
         return (
+
             <div className="App">
-                <Layout className="layout">
-                    <Header>
-                        <div>
-                            <HeaderComponent menuItems={this.handleMenuItems} />
-                        </div>
-                    </Header>
-                    <Content style={{ margin: 'auto' }}>
-                        <BrowserRouter>
-                            <Switch>
-                                <Route exact path='/' render={() => (
-                                    <LoginComponent />
-                                )} />
-                                <Route exact path='/create-question' render={() => (
-                                    <CreateQuestionComponent />
-                                )} />
-                            </Switch>
-                        </BrowserRouter>
-                    </Content>
-                    <Footer style={{ textAlign: 'center' }}>
-                        Carlos Amaral
-                    </Footer>
-                </Layout>
+                <BrowserRouter>
+                    <Layout className="layout">
+
+                        <Header>
+                            <div>
+                                <HeaderComponent menuItems={this.handleMenuItems} />
+                            </div>
+                        </Header>
+                        <Content style={{ margin: 'auto' }}>
+
+                            <Route exact path='/homepage' render={() => (
+                                <HomepageComponent />
+                            )} />
+                            <Route exact path='/' render={() => (
+                                <LoginComponent />
+                            )} />
+                            <Route exact path='/create-question' render={() => (
+                                <CreateQuestionComponent />
+                            )} />
+
+                        </Content>
+                        <Footer style={{ textAlign: 'center' }}>
+                            Carlos Amaral
+                            </Footer>
+                    </Layout>
+                </BrowserRouter>
             </div>
+
         );
     }
 }
@@ -68,8 +75,9 @@ const mapStateToProps = state => ({
     users: Object.values(state.users.items)
 });
 
-function mapDispatchToProps(dispatch) {
-    //return bindActionCreators(actionCreators, dispatch);
+
+const mapDispatchToProps = {
+    getUsersFromServer
 }
 
-export default connect(mapStateToProps, { getUsersFromServer })(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
