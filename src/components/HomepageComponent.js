@@ -36,6 +36,7 @@ class HomepageComponent extends Component {
 
     componentDidMount(){
         this.props.getQuestionsFromServer();
+        this.props.getUsersFromServer();
     }
     render() {
         return (
@@ -69,20 +70,22 @@ class HomepageComponent extends Component {
 
 const mapStateToProps = (state) => ({
     unansweredQuestions: Object.values(state.questions.items),
-    answeredQuestions: Object.values(state.questions.items)
+    answeredQuestions: Object.values(state.questions.items).forEach(i => (i.option =  state.users.items["johndoe"].answers[Object.keys(state.users.items["johndoe"].answers).find(k2=> k2 == i.id)]))
     //answeredQuestions: Object.values(state.questions.items),
 })
 
 
 const mapDispatchToProps = {
-    getQuestionsFromServer,
-    getUsersFromServer
-    
+    getUsersFromServer,
+    getQuestionsFromServer
+   
 }
 
 HomepageComponent.propTypes = {
     getUsersFromServer: PropTypes.array.isRequired,
-    questions: PropTypes.array.isRequired
+    getQuestionsFromServer: PropTypes.array.isRequired,
+    questions: PropTypes.array.isRequired,
+    users: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomepageComponent)

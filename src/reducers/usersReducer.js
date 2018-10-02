@@ -3,7 +3,7 @@ import {GET_USERS, LOGIN_USER, LOGOUT_USER} from '../actions/types';
 const initialState = {
     items:[],
     item:{},
-    loggedInUser: ""
+    loggedInUser: null
 };
 
 
@@ -23,7 +23,7 @@ export default function usersReducer(state = initialState, action) {
         case 'LOGOUT_USER':
             return {
                 ...state,
-                loggedInUser: ""
+                loggedInUser: null
             };
         default:
             return state;
