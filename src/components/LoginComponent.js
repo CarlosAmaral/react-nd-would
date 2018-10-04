@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Button, Card, Select, Form } from "antd";
 import { getUsersFromServer, logInUser } from "../actions/usersActions";
 import { connect } from "react-redux";
+import _ from "lodash";
+import Redirect from 'react-router-dom/Redirect';
 
 const Option = Select.Option;
 const FormItem = Form.Item;
@@ -20,14 +22,21 @@ class LoginComponent extends Component {
             if (!err) {
                 const userObj = users.find(k => k.name === values.chosenUser);
                 this.props.logInUser(userObj);
+           
+               
             }
         });
     }
 
 
     render() {
-        const { users } = this.props;
+        const { users,loggedInUser } = this.props;
         const { getFieldDecorator } = this.props.form;
+
+             
+        if(!_.isEmpty(loggedInUser)){
+            return <Redirect to='/homepage'/>
+        }
         return (
             <div>
                 <Card title="Sign In" bordered={false} style={{ width: 300 }}>
@@ -64,7 +73,8 @@ LoginComponent.propTypes = {
 
 
 const mapStateToProps = state => ({
-    users: Object.values(state.users.items)
+    users: Object.values(state.users.items),
+    loggedInUser: state.users.loggedInUser
 });
 
 export default connect(mapStateToProps, { getUsersFromServer, logInUser })(LoginFormComponent);

@@ -3,8 +3,9 @@ import _ from "lodash";
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { getUsersFromServer } from "../actions/usersActions";
 import { postQuestionsToServer } from "../actions/questionsActions";
+import { getUsersFromServer } from "../actions/usersActions";
+import {Redirect} from 'react-router-dom'
 
 const FormItem = Form.Item;
 
@@ -28,6 +29,12 @@ class CreateQuestionFormComponent extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
+
+        //Replace if statement with global function or shared component
+        if (_.isEmpty(this.props.loggedInUser)) {
+            return <Redirect to='/' />
+        }
+        
         return (
             <div>
                 <Card title="Create New Question">
@@ -74,7 +81,7 @@ const CreateQuestionComponent = Form.create()(CreateQuestionFormComponent);
 
 
 const mapStateToProps = state => ({
-    //questions: Object.values(state.questions.items)
+    loggedInUser: state.users.loggedInUser,
 });
 
 CreateQuestionComponent.propTypes = {

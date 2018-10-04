@@ -22,8 +22,7 @@ export default function questionsReducer(state = initialState, action) {
             };
         case 'GET_ANSWERED_AND_UNANSWERED_QUESTIONS':
             const questions = Object.values(action.payload[0]);
-            let users = Object.values(action.payload[1]);
-            users = users.find(author => author.id === action.param);
+            const users = Object.values(action.payload[1]).find(author => author.id === action.param);
 
             const unansweredQuestions = questions.filter(q => Object.keys(users.answers).indexOf(q.id) === -1);
             const answeredQuestions = questions.filter(q => Object.keys(users.answers).indexOf(q.id) !== -1)

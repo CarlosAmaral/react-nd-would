@@ -14,9 +14,9 @@ class HeaderComponent extends Component {
 
     render() {
 
-        const {loggedInUserName} = this.props;
+        const {loggedInUser} = this.props;
 
-        const disabledMenuItem = _.isEmpty(loggedInUserName);
+        const disabledMenuItem = _.isEmpty(loggedInUser);
 
         return (
             <div>
@@ -37,9 +37,9 @@ class HeaderComponent extends Component {
                         <Link to='/learder-board'>Leader Board</Link>
                     </Menu.Item>
 
-                    {!_.isEmpty(loggedInUserName) && <Menu.Item key="4">Hello, {loggedInUserName}</Menu.Item>}
+                    {!_.isEmpty(loggedInUser) && <Menu.Item key="4">Hello, {loggedInUser.name}</Menu.Item>}
 
-                    {!_.isEmpty(loggedInUserName) && <Menu.Item key="5" onClick={this.logOutUser}>
+                    {!_.isEmpty(loggedInUser) && <Menu.Item key="5" onClick={this.logOutUser}>
                         Logout</Menu.Item>}
                 </Menu>
             </div>
@@ -53,11 +53,11 @@ const mapDispatchToProps = {
 };
 
 HeaderComponent.propTypes = {
-    loggedInUserName: PropTypes.string.isRequired
+    loggedInUser: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    loggedInUserName: state.users.loggedInUser.name
+    loggedInUser: state.users.loggedInUser
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
