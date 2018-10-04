@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import {Layout, Menu, Breadcrumb} from 'antd';
 import PropTypes from 'prop-types';
 import LoginComponent from "./components/LoginComponent";
-import { connect, Provider } from 'react-redux';
+import {connect, Provider} from 'react-redux';
 import HeaderComponent from "./components/HeaderComponent";
 import HomepageComponent from "./components/HomepageComponent";
 import CreateQuestionComponent from "./components/CreateQuestionComponent";
-import { getUsersFromServer } from './actions/usersActions';
-import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import {getUsersFromServer} from './actions/usersActions';
+import {Switch, Route, BrowserRouter} from 'react-router-dom'
 
-const { Header, Content, Footer } = Layout;
+const {Header, Content, Footer} = Layout;
 
 class App extends Component {
     constructor(props) {
@@ -25,11 +25,11 @@ class App extends Component {
         this.props.getUsersFromServer();
     }
 
-    handleMenuItems = (item, key) => this.setState({ menuItem: item.key });
+    handleMenuItems = (item, key) => this.setState({menuItem: item.key});
 
 
     render() {
-        const { menuItem } = this.state;
+        const {menuItem} = this.state;
 
         return (
 
@@ -39,25 +39,26 @@ class App extends Component {
 
                         <Header>
                             <div>
-                                <HeaderComponent menuItems={this.handleMenuItems} />
+                                <HeaderComponent menuItems={this.handleMenuItems}/>
                             </div>
                         </Header>
-                        <Content style={{ margin: 'auto' }}>
+                        <Content style={{margin: 'auto'}}>
 
                             <Route exact path='/homepage' render={() => (
-                                <HomepageComponent />
-                            )} />
+                                <HomepageComponent/>
+                            )}/>
                             <Route exact path='/' render={() => (
-                                <LoginComponent />
-                            )} />
+                                <LoginComponent/>
+                            )}/>
                             <Route exact path='/create-question' render={() => (
-                                <CreateQuestionComponent />
-                            )} />
+                                <CreateQuestionComponent/>
+                            )}/>
 
                         </Content>
-                        <Footer style={{ textAlign: 'center' }}>
-                            Carlos Amaral
-                            </Footer>
+
+                        <Footer style={{textAlign: 'center'}}>
+                            What Would You Do @ 2018
+                        </Footer>
                     </Layout>
                 </BrowserRouter>
             </div>
