@@ -1,47 +1,46 @@
-import React, { Component } from 'react';
-import { Menu } from "antd";
-import { BrowserRouter, Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React, {Component} from 'react';
+import {Menu} from "antd";
+import {BrowserRouter, Link} from "react-router-dom";
+import {logOutUser} from "../actions/usersActions";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+import _ from "lodash";
 
 
 class HeaderComponent extends Component {
 
-    componentDidMount() {
-
-    }
-
-    static getDerivedStateFromProps(props, state) {
-        console.log(props, "pROPS");
-    }
-
-    onChangeMenu = (item) => this.props.menuItems(item);
 
     logOutUser = () => this.props.logOutUser();
 
     render() {
 
-        const { loggedInUser } = this.props;
+        const {loggedInUserName} = this.props;
+
+        const disabledMenuItem = _.isEmpty(loggedInUserName);
 
         return (
             <div>
-                <div className="logo" />
+                <div className="logo"/>
                 <Menu
-                    onSelect={this.onChangeMenu}
                     theme="dark"
                     mode="horizontal"
-                    style={{ lineHeight: '64px' }}>
-                    <Menu.Item key="1">
+                    style={{lineHeight: '64px'}}>
+
+
+                    <Menu.Item key="1" disabled={disabledMenuItem}>
                         <Link to='/homepage'>Home</Link>
                     </Menu.Item>
-                    <Menu.Item key="2">
+                    <Menu.Item key="2" disabled={disabledMenuItem}>
                         <Link to='/create-question'>New Question</Link>
                     </Menu.Item>
-                    <Menu.Item key="3">
+                    <Menu.Item key="3" disabled={disabledMenuItem}>
                         <Link to='/learder-board'>Leader Board</Link>
                     </Menu.Item>
-                    <Menu.Item key="4">Hello, {}</Menu.Item>
-                    <Menu.Item key="5" onClick={this.logOutUser}>
-                        Logout</Menu.Item>
+
+                    {!_.isEmpty(loggedInUserName) && <Menu.Item key="4">Hello, {loggedInUserName}</Menu.Item>}
+
+                    {!_.isEmpty(loggedInUserName) && <Menu.Item key="5" onClick={this.logOutUser}>
+                        Logout</Menu.Item>}
                 </Menu>
             </div>
         );
@@ -49,8 +48,16 @@ class HeaderComponent extends Component {
 }
 
 
+const mapDispatchToProps = {
+    logOutUser
+};
+
+HeaderComponent.propTypes = {
+    loggedInUserName: PropTypes.string.isRequired
+};
+
 const mapStateToProps = state => ({
-    loggedInUser: state.users.loggedInUser
+    loggedInUserName: state.users.loggedInUser.name
 });
 
-export default connect(mapStateToProps)(HeaderComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);

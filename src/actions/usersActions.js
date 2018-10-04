@@ -8,6 +8,6 @@ export const getUsersFromServer = () => dispatch => {
     }))
 };
 
-export const logInUser = (user) => dispatch => dispatch({ type: LOGIN_USER, payload: user })
+export const logInUser = (user) => dispatch => dispatch({ type: LOGIN_USER, payload: user });
 
-export const logOutUser = () => dispatch => dispatch({ type: LOGOUT_USER, payload: '' })
+export const logOutUser = () => dispatch => dispatch({ type: LOGOUT_USER, payload: null });

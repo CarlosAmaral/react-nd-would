@@ -14,16 +14,19 @@ class LoginComponent extends Component {
 
 
     handleSubmit = (e) => {
+        const { users, defaultUser } = this.props;
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                this.props.logInUser(values.chosenUser);
+                const userObj = users.find(k => k.name === values.chosenUser);
+                this.props.logInUser(userObj);
             }
         });
     }
 
+
     render() {
-        const { users, defaultUser } = this.props;
+        const { users } = this.props;
         const { getFieldDecorator } = this.props.form;
         return (
             <div>
@@ -38,7 +41,7 @@ class LoginComponent extends Component {
                                 }]
                             })(
                                 <Select placeholder="Select User" style={{ width: 200 }} onChange={this.handleChange}>
-                                    {users.map(user => <Option key={user.id} value={user.id}>{user.name}</Option>)}
+                                    {users.map(user => <Option key={user.id} value={user.name}>{user.name}</Option>)}
                                 </Select>
                             )}
                         </FormItem>

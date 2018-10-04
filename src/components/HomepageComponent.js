@@ -20,7 +20,7 @@ const renderTabBar = (props, DefaultTabBar) => (
 class HomepageComponent extends Component {
 
     componentDidMount() {
-        this.props.getAnsweredAndUnansweredQuestions();
+        this.props.getAnsweredAndUnansweredQuestions(this.props.loggedInUserId);
     }
 
     render() {
@@ -73,7 +73,8 @@ class HomepageComponent extends Component {
 
 const mapStateToProps = (state) => ({
     answered: Object.values(state.questions.answered),
-    unanswered: Object.values(state.questions.unanswered)
+    unanswered: Object.values(state.questions.unanswered),
+    loggedInUserId: state.users.loggedInUser.id
 });
 
 

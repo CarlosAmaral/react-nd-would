@@ -26,7 +26,7 @@ export const getQuestionsFromServer = () => dispatch => {
 };
 
 
-export const getAnsweredAndUnansweredQuestions = () => dispatch => {
+export const getAnsweredAndUnansweredQuestions = (author) => dispatch => {
 
     let promises = [
         API.getQuestions(),
@@ -35,6 +35,7 @@ export const getAnsweredAndUnansweredQuestions = () => dispatch => {
 
     Promise.all(promises).then(answered => dispatch({
         type: GET_ANSWERED_AND_UNANSWERED_QUESTIONS,
-        payload: answered
+        payload: answered,
+        param: author
     }));
 };
