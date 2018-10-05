@@ -9,6 +9,8 @@ import { connect, Provider } from 'react-redux';
 import HeaderComponent from "./components/HeaderComponent";
 import HomepageComponent from "./components/HomepageComponent";
 import CreateQuestionComponent from "./components/CreateQuestionComponent";
+import LeaderboardComponent from "./components/LeaderboardComponent";
+import NotFoundComponent from "./components/NotFoundComponent";
 import { getUsersFromServer } from './actions/usersActions';
 import { Switch, Redirect, Route, BrowserRouter } from 'react-router-dom'
 
@@ -46,15 +48,23 @@ class App extends Component {
                             </div>
                         </Header>
                         <Content style={{ margin: 'auto' }}>
+                        <Switch>
                                 <Route exact path='/homepage' render={() => (
                                     <HomepageComponent />
                                 )} />
                                 <Route exact path='/' render={() => (
                                     <LoginComponent />
                                 )} />
-                                <Route exact path='/create-question' render={() => (
+                                <Route exact path='/add' render={() => (
                                     <CreateQuestionComponent />
                                 )} />
+                                <Route exact path='/leaderboard' render={() => (
+                                    <LeaderboardComponent />
+                                )} />
+                                <Route path='*' render={() => (
+                                    <NotFoundComponent />
+                                )} />
+                                </Switch>
                         </Content>
 
                         <Footer style={{ textAlign: 'center' }}>

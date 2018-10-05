@@ -16,10 +16,11 @@ class CreateQuestionFormComponent extends Component {
      * @param e
      */
     handleSubmit = (e) => {
+        const {loggedInUser} = this.props;
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                const valuesPayload = { ...values, author: "" };
+                const valuesPayload = { ...values, author: loggedInUser.id};
                 this.props.postQuestionsToServer(valuesPayload);
             } else {
                 message.info('Please complete the form, Sir!');

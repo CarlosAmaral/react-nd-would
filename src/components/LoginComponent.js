@@ -16,26 +16,26 @@ class LoginComponent extends Component {
 
 
     handleSubmit = (e) => {
-        const { users, defaultUser } = this.props;
+        const { users } = this.props;
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 const userObj = users.find(k => k.name === values.chosenUser);
                 this.props.logInUser(userObj);
-           
-               
+
+
             }
         });
     }
 
 
     render() {
-        const { users,loggedInUser } = this.props;
+        const { users, loggedInUser } = this.props;
         const { getFieldDecorator } = this.props.form;
 
-             
-        if(!_.isEmpty(loggedInUser)){
-            return <Redirect to='/homepage'/>
+
+        if (!_.isEmpty(loggedInUser)) {
+            return <Redirect to='/homepage' />
         }
         return (
             <div>
