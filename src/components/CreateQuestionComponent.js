@@ -38,7 +38,7 @@ class CreateQuestionFormComponent extends Component {
         
         return (
             <div>
-                <Card title="Create New Question">
+                <Card title="Create New Question" style={{ width: 500 }}>
 
                     <h5>Complete the question</h5>
                     <h3>Would you Rather</h3>

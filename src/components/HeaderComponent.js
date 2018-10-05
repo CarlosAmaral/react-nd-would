@@ -31,10 +31,10 @@ class HeaderComponent extends Component {
                         <Link to='/homepage'>Home</Link>
                     </Menu.Item>
                     <Menu.Item key="2" disabled={disabledMenuItem}>
-                        <Link to='/create-question'>New Question</Link>
+                        <Link to='/add'>New Question</Link>
                     </Menu.Item>
                     <Menu.Item key="3" disabled={disabledMenuItem}>
-                        <Link to='/learder-board'>Leader Board</Link>
+                        <Link to='/leaderboard'>Leader Board</Link>
                     </Menu.Item>
 
                     {!_.isEmpty(loggedInUser) && <Menu.Item key="4">Hello, {loggedInUser.name}</Menu.Item>}

@@ -11,7 +11,9 @@ import HomepageComponent from "./components/HomepageComponent";
 import CreateQuestionComponent from "./components/CreateQuestionComponent";
 import LeaderboardComponent from "./components/LeaderboardComponent";
 import NotFoundComponent from "./components/NotFoundComponent";
+import AnswerQuestionComponent from "./components/AnswerQuestionComponent";
 import { getUsersFromServer } from './actions/usersActions';
+import { getQuestionsFromServer } from './actions/questionsActions';
 import { Switch, Redirect, Route, BrowserRouter } from 'react-router-dom'
 
 const { Header, Content, Footer } = Layout;
@@ -28,16 +30,8 @@ class App extends Component {
         this.props.getUsersFromServer();
     }
 
-    handleMenuItems = (item, key) => this.setState({ menuItem: item.key });
-
-
     render() {
-        const { loggedInUser } = this.props;
-
-
-
         return (
-
             <div className="App">
                 <BrowserRouter>
                     <Layout className="layout">
@@ -48,7 +42,7 @@ class App extends Component {
                             </div>
                         </Header>
                         <Content style={{ margin: 'auto' }}>
-                        <Switch>
+                            <Switch>
                                 <Route exact path='/homepage' render={() => (
                                     <HomepageComponent />
                                 )} />
@@ -61,10 +55,13 @@ class App extends Component {
                                 <Route exact path='/leaderboard' render={() => (
                                     <LeaderboardComponent />
                                 )} />
+                                <Route exact path='/questions/:question' render={() => (
+                                    <AnswerQuestionComponent />
+                                )} />
                                 <Route path='*' render={() => (
                                     <NotFoundComponent />
                                 )} />
-                                </Switch>
+                            </Switch>
                         </Content>
 
                         <Footer style={{ textAlign: 'center' }}>
@@ -91,7 +88,8 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = {
-    getUsersFromServer
+    getUsersFromServer,
+    getQuestionsFromServer
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

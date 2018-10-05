@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { List, Avatar } from 'antd';
+import { List, Avatar, Divider, Card, Button } from 'antd';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Tabs } from 'antd';
@@ -36,46 +36,36 @@ class HomepageComponent extends Component {
         const { answered, unanswered } = this.props;
         return (
             <div>
-                <StickyContainer>
-                    <Tabs defaultActiveKey="1" renderTabBar={renderTabBar}>
-                        <TabPane tab="Unanswered Questions" key="1" style={{ height: 200 }}>
-                            <div>
-                                <List
-                                    itemLayout="horizontal"
-                                    loading={unanswered.length === 0}
-                                    dataSource={unanswered}
-                                    renderItem={item => (
-                                        <List.Item>
-                                            <List.Item.Meta
-                                                //avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>}
-                                                title={<a>{item.author}</a>}
-                                                description={item.optionOne.text}
-                                            />
-                                        </List.Item>
-                                    )}
-                                />
+                <Tabs defaultActiveKey="1">
+                    <TabPane tab="Unanswered Questions" key="1">
+                        {unanswered.map(u =>
+                            <div style={{ background: '#ECECEC', padding: '15px' }}>
+                                <Card title={`${u.author}, asks:`}
+                                    extra={<Button size="small"
+                                        className="text-uppercase"
+                                        type="primary">View Poll</Button>}
+                                    bordered={false} style={{ width: 500 }}>
+                                    <h5>Would you Rather</h5>
+                                    <p>...{u.optionOne.text}...</p>
+                                </Card>
                             </div>
-                        </TabPane>
-                        <TabPane tab="Answered Questions" key="2">
-                            <div>
-                                <List
-                                    itemLayout="horizontal"
-                                    dataSource={answered}
-                                    loading={answered.length === 0}
-                                    renderItem={item => (
-                                        <List.Item>
-                                            <List.Item.Meta
-                                                //avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>}
-                                                title={<a>{item.author}</a>}
-                                                description={Object.values(item).find(k => k.selected === true).text}
-                                            />
-                                        </List.Item>
-                                    )}
-                                />
+                        )}
+                    </TabPane>
+                    <TabPane tab="Answered Questions" key="2">
+                        {answered.map(a =>
+                            <div style={{ background: '#ECECEC', padding: '15px' }}>
+                                <Card title={`${a.author}, asks:`}
+                                    extra={<Button size="small"
+                                        className="text-uppercase"
+                                        type="primary">View Poll</Button>}
+                                    bordered={false} style={{ width: 500 }}>
+                                    <h5>Would you Rather</h5>
+                                    <p>...{Object.values(a).find(k => k.selected === true).text}...</p>
+                                </Card>
                             </div>
-                        </TabPane>
-                    </Tabs>
-                </StickyContainer>
+                        )}
+                    </TabPane>
+                </Tabs>
             </div>
         )
     }
