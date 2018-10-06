@@ -1,4 +1,10 @@
-import {POST_QUESTIONS, GET_QUESTIONS, GET_ANSWERED_AND_UNANSWERED_QUESTIONS} from './types';
+import {
+    POST_QUESTIONS,
+    GET_QUESTIONS,
+    GET_ANSWERED_AND_UNANSWERED_QUESTIONS,
+    GET_SELECTED_QUESTION,
+    SAVE_ANSWER
+} from './types';
 import * as API from '../utils/WouldYouRatherAPI';
 
 export const postQuestionsToServer = (questionPayload) => dispatch => {
@@ -25,6 +31,12 @@ export const getQuestionsFromServer = () => dispatch => {
 
 };
 
+export const saveQuestionAnswerToServer = (answerPayload) => dispatch => {
+
+    API.saveQuestionAnswer(answerPayload);
+
+};
+
 
 export const getAnsweredAndUnansweredQuestions = (author) => dispatch => {
 
@@ -39,3 +51,11 @@ export const getAnsweredAndUnansweredQuestions = (author) => dispatch => {
         param: author
     }));
 };
+
+
+export const getSelectedQuestion = (questions, id) => dispatch => dispatch({
+    type: GET_SELECTED_QUESTION,
+    payload: questions,
+    id: id
+})
+

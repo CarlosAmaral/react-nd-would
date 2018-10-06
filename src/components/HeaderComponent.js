@@ -5,7 +5,7 @@ import {logOutUser} from "../actions/usersActions";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import _ from "lodash";
-
+import { withRouter } from 'react-router-dom'
 
 class HeaderComponent extends Component {
 
@@ -60,4 +60,4 @@ const mapStateToProps = state => ({
     loggedInUser: state.users.loggedInUser
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderComponent));

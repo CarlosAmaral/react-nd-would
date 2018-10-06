@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 export class LeaderboardComponent extends Component {
   static propTypes = {
@@ -24,4 +25,4 @@ const mapDispatchToProps = {
   
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LeaderboardComponent)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LeaderboardComponent));

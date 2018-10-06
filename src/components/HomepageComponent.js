@@ -4,20 +4,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Tabs } from 'antd';
 import _ from "lodash";
-import { StickyContainer, Sticky } from 'react-sticky';
 import { getAnsweredAndUnansweredQuestions } from "../actions/questionsActions";
 import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const TabPane = Tabs.TabPane;
 
-
-const renderTabBar = (props, DefaultTabBar) => (
-    <Sticky bottomOffset={80}>
-        {({ style }) => (
-            <DefaultTabBar {...props} style={{ ...style, zIndex: 1, background: '#000' }} />
-        )}
-    </Sticky>
-);
 
 class HomepageComponent extends Component {
 
@@ -25,7 +17,9 @@ class HomepageComponent extends Component {
         this.props.getAnsweredAndUnansweredQuestions(this.props.loggedInUser.id);
     }
 
-
+    viewQuestion = (questionId) => {
+        return this.props.history.push(`/questions/${questionId}`)
+    }
 
     render() {
 
@@ -39,11 +33,12 @@ class HomepageComponent extends Component {
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="Unanswered Questions" key="1">
                         {unanswered.map(u =>
-                            <div style={{ background: '#ECECEC', padding: '15px' }}>
+                            <div key={u.id} style={{ background: '#ECECEC', padding: '15px' }}>
                                 <Card title={`${u.author}, asks:`}
                                     extra={<Button size="small"
                                         className="text-uppercase"
-                                        type="primary">View Poll</Button>}
+                                        type="primary" onClick={() => this.viewQuestion(u.id)}>
+                                        View Poll</Button>}
                                     bordered={false} style={{ width: 500 }}>
                                     <h5>Would you Rather</h5>
                                     <p>...{u.optionOne.text}...</p>
@@ -53,7 +48,7 @@ class HomepageComponent extends Component {
                     </TabPane>
                     <TabPane tab="Answered Questions" key="2">
                         {answered.map(a =>
-                            <div style={{ background: '#ECECEC', padding: '15px' }}>
+                            <div key={a.id} style={{ background: '#ECECEC', padding: '15px' }}>
                                 <Card title={`${a.author}, asks:`}
                                     extra={<Button size="small"
                                         className="text-uppercase"
@@ -87,4 +82,4 @@ HomepageComponent.propTypes = {
     unanswered: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomepageComponent)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomepageComponent))

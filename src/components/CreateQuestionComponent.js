@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { postQuestionsToServer } from "../actions/questionsActions";
 import { getUsersFromServer } from "../actions/usersActions";
 import {Redirect} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 const FormItem = Form.Item;
 
@@ -90,6 +91,10 @@ CreateQuestionComponent.propTypes = {
     postQuestionsToServer: PropTypes.func.isRequired,
     questions: PropTypes.array.isRequired
 };
+const mapDispatchToProps = {
+    getUsersFromServer, 
+    postQuestionsToServer 
+  }
+  
 
-
-export default connect(mapStateToProps, { getUsersFromServer, postQuestionsToServer })(CreateQuestionComponent);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateQuestionComponent));

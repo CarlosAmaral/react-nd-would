@@ -35,7 +35,7 @@ class LoginComponent extends Component {
 
 
         if (!_.isEmpty(loggedInUser)) {
-            return <Redirect to='/homepage' />
+            return <Redirect to="/homepage" />
         }
         return (
             <div>
