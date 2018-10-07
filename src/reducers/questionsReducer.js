@@ -4,6 +4,7 @@ import {
     GET_ANSWERED_AND_UNANSWERED_QUESTIONS,
     GET_SELECTED_QUESTION
 } from '../actions/types';
+import _ from 'lodash';
 
 const initialState = {
     items: [],
@@ -33,13 +34,22 @@ export default function questionsReducer(state = initialState, action) {
             };
 
         case 'GET_ANSWERED_AND_UNANSWERED_QUESTIONS':
-            const questions = Object.values(action.payload[0]);
-            const users = Object.values(action.payload[1]).find(author => author.id === action.param);
 
-            const unansweredQuestions = questions.filter(q => Object.keys(users.answers).indexOf(q.id) === -1);
-            const answeredQuestions = questions.filter(q => Object.keys(users.answers).indexOf(q.id) !== -1)
+        if(!_.isUndefined(action.param)){
+            const questions = Object.values(action.payload[0]);
+            const users = Object.values(action.payload[1]);
+            const loggedInUser = Object.values(action.payload[1]).find(author => author.id === action.param);
+
+            const unansweredQuestions = questions.filter(q => Object.keys(loggedInUser.answers).indexOf(q.id) === -1).map(u => {
+                u.name = users.find(i => i.id === u.author).name;
+                u.avatarURL = users.find(i => i.id === u.author).avatarURL;
+                return u;
+            });
+            const answeredQuestions = questions.filter(q => Object.keys(loggedInUser.answers).indexOf(q.id) !== -1)
                 .map(a => {
-                    Object.keys(users.answers).find(l => l === a.id) === "optionOne" ? (a.optionOne.selected = true) : a.optionOne.selected = false;
+                    Object.keys(loggedInUser.answers).find(l => l === a.id) === "optionOne" ? (a.optionOne.selected = true) : a.optionOne.selected = false;
+                    a.name = users.find(i => i.id === a.author).name;
+                    a.avatarURL = users.find(i => i.id === a.author).avatarURL;
                     a.optionTwo.selected = !a.optionOne.selected;
                     return a;
                 });
@@ -48,6 +58,7 @@ export default function questionsReducer(state = initialState, action) {
                 unanswered: unansweredQuestions,
                 answered: answeredQuestions
             };
+        }
         default:
             return state;
     }

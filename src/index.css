@@ -1,5 +1,36 @@
+*{
+  font-family: 'Lato', sans-serif !important;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Lato',sans-serif;
+} 
+
+.App{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
+
+.yield-content{
+  flex-grow:1;
+}
+
+.layout{
+  background: rgb(2,0,36) !important; 
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(198,138,138,1) 100%, rgba(0,212,255,1) 100%) !important;
+
+}
+
+.ant-menu-item{
+  text-transform: uppercase;
+  font-weight: 200 !important;
+}
+
+.ant-menu-item.ant-menu-item-selected{
+  background: rgb(50, 49, 78) !important; 
+}
+
+
+

@@ -37,10 +37,9 @@ class App extends Component {
                     <Header>
                         <HeaderComponent />
                     </Header>
-                    <Content style={{ margin: 'auto', padding:'50px' }}>
+                    <Content className="yield-content" style={{ margin: 'auto', padding: '50px' }}>
                         <Switch>
-
-                            <Route exact path='/' component={LoginComponent} exact={true} />
+                            <Route path='/' component={LoginComponent} exact={true} />
 
                             <Route exact path='/homepage' component={HomepageComponent} />
 

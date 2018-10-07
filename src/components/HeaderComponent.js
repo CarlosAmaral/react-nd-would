@@ -15,8 +15,9 @@ class HeaderComponent extends Component {
     render() {
 
         const {loggedInUser} = this.props;
-
+        const {pathname} = this.props.history.location;
         const disabledMenuItem = _.isEmpty(loggedInUser);
+
 
         return (
             <div>
@@ -24,10 +25,10 @@ class HeaderComponent extends Component {
                 <Menu
                     theme="dark"
                     mode="horizontal"
-                    style={{lineHeight: '64px'}}>
-
-
-                    <Menu.Item key="1" disabled={disabledMenuItem}>
+                    style={{lineHeight: '64px'}}
+                    activeKey={pathname}>
+                    
+                    <Menu.Item key="/homepage" disabled={disabledMenuItem}>
                         <Link to='/homepage'>Home</Link>
                     </Menu.Item>
                     <Menu.Item key="2" disabled={disabledMenuItem}>
@@ -37,7 +38,7 @@ class HeaderComponent extends Component {
                         <Link to='/leaderboard'>Leader Board</Link>
                     </Menu.Item>
 
-                    {!_.isEmpty(loggedInUser) && <Menu.Item key="4">Hello, {loggedInUser.name}</Menu.Item>}
+                    {!_.isEmpty(loggedInUser) && <Menu.Item selectable={false} key="4">Hello, {loggedInUser.name}</Menu.Item>}
 
                     {!_.isEmpty(loggedInUser) && <Menu.Item key="5" onClick={this.logOutUser}>
                         Logout</Menu.Item>}
