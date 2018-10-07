@@ -33,7 +33,7 @@ export const getQuestionsFromServer = () => dispatch => {
 
 export const saveQuestionAnswerToServer = (answerPayload) => dispatch => {
 
-    API.saveQuestionAnswer(answerPayload);
+    API.saveQuestionAnswer(answerPayload)
 
 };
 

@@ -26,11 +26,6 @@ export default function questionsReducer(state = initialState, action) {
                 ...state,
                 items: action.payload
             };
-        case 'SAVE_ANSWER':
-            return {
-                ...state,
-                items: action.payload
-            };
         case 'GET_SELECTED_QUESTION':
             return {
                 ...state,

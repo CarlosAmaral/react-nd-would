@@ -9,7 +9,7 @@ import _ from 'lodash';
 const RadioGroup = Radio.Group;
 const FormItem = Form.Item;
 
-export class AnswerQuestionFormComponent extends Component {
+export class QuestionDetailsFormComponent extends Component {
 
 
     handleSubmit = (e) => {
@@ -67,10 +67,9 @@ export class AnswerQuestionFormComponent extends Component {
     }
 }
 
-const AnswerQuestionComponent = Form.create()(AnswerQuestionFormComponent);
+const QuestionDetailsComponent = Form.create()(QuestionDetailsFormComponent);
 
 const mapStateToProps = (state, props) => ({
-
     loggedInUser: state.users.loggedInUser,
     selectedQuestion: state.questions.items[props.match.params.question]
 });
@@ -79,4 +78,4 @@ const mapDispatchToProps = {
     saveQuestionAnswerToServer
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AnswerQuestionComponent));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(QuestionDetailsComponent));

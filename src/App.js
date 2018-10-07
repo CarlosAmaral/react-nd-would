@@ -12,14 +12,14 @@ import HomepageComponent from "./components/HomepageComponent";
 import CreateQuestionComponent from "./components/CreateQuestionComponent";
 import LeaderboardComponent from "./components/LeaderboardComponent";
 import NotFoundComponent from "./components/NotFoundComponent";
-import AnswerQuestionComponent from "./components/AnswerQuestionComponent";
+import QuestionDetailsComponent from "./components/QuestionDetailsComponent";
 
 // Actions
 import { getUsersFromServer } from './actions/usersActions';
 import { getQuestionsFromServer } from './actions/questionsActions';
 
 // Router
-import {Route, withRouter, Switch } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 
 const { Header, Content, Footer } = Layout;
 
@@ -34,13 +34,10 @@ class App extends Component {
         return (
             <div className="App">
                 <Layout className="layout">
-
                     <Header>
-                        <div>
-                            <HeaderComponent menuItems={this.handleMenuItems} />
-                        </div>
+                        <HeaderComponent />
                     </Header>
-                    <Content style={{ margin: 'auto' }}>
+                    <Content style={{ margin: 'auto', padding:'50px' }}>
                         <Switch>
 
                             <Route exact path='/' component={LoginComponent} exact={true} />
@@ -54,7 +51,7 @@ class App extends Component {
                                 <LeaderboardComponent />
                             )} />
                             <Route exact path='/questions/:question' render={() => (
-                                <AnswerQuestionComponent />
+                                <QuestionDetailsComponent />
                             )} />
                             <Route render={() => (
                                 <NotFoundComponent />

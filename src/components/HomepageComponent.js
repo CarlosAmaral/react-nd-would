@@ -30,7 +30,7 @@ class HomepageComponent extends Component {
         const { answered, unanswered } = this.props;
         return (
             <div>
-                <Tabs defaultActiveKey="1">
+                <Tabs tabPosition="left" defaultActiveKey="1">
                     <TabPane tab="Unanswered Questions" key="1">
                         {unanswered.map(u =>
                             <div key={u.id} style={{ background: '#ECECEC', padding: '15px' }}>
