@@ -13,7 +13,7 @@ import CreateQuestionComponent from "./components/CreateQuestionComponent";
 import LeaderboardComponent from "./components/LeaderboardComponent";
 import NotFoundComponent from "./components/NotFoundComponent";
 import QuestionDetailsComponent from "./components/QuestionDetailsComponent";
-
+import QuestionResultsComponent from './components/QuestionResultsComponent';
 // Actions
 import { getUsersFromServer } from './actions/usersActions';
 import { getQuestionsFromServer } from './actions/questionsActions';
@@ -51,6 +51,9 @@ class App extends Component {
                             )} />
                             <Route exact path='/questions/:question' render={() => (
                                 <QuestionDetailsComponent />
+                            )} />
+                            <Route exact path='/results/:question' render={() => (
+                                <QuestionResultsComponent />
                             )} />
                             <Route render={() => (
                                 <NotFoundComponent />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col, Avatar, Skeleton, Card, Button } from 'antd';
+import { Row, Col, Avatar, Spin, Skeleton, Card, Button } from 'antd';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Tabs } from 'antd';
@@ -17,6 +17,8 @@ class HomepageComponent extends Component {
     }
 
     viewQuestion = (questionId) => this.props.history.push(`/questions/${questionId}`);
+    
+    viewResults = (questionId) => this.props.history.push(`/results/${questionId}`);
 
     render() {
 
@@ -27,9 +29,11 @@ class HomepageComponent extends Component {
         const { answered, unanswered } = this.props;
         return (
             <div>
-                <Tabs tabPosition="left" defaultActiveKey="1">
+                {(unanswered.length === 0 || answered.length === 0) ? (
+                    <Spin size="large"/>
+                ):(
+                    <Tabs tabPosition="left" defaultActiveKey="1">
                     <TabPane tab="Unanswered Questions" key="1">
-                        <Skeleton loading={unanswered.length === 0}>
                             {unanswered.map(u =>
                                 <div key={u.id} style={{ padding: '15px' }}>
                                     <Card title={`${u.name}, asks:`}
@@ -37,10 +41,10 @@ class HomepageComponent extends Component {
                                             className="text-uppercase"
                                             type="primary" onClick={() => this.viewQuestion(u.id)}>
                                             View Poll</Button>}
-                                        bordered={false} style={{ width: 500, heigh: 400 }}>
+                                        bordered={false} style={{ width: 500, height: 200 }}>
                                         <Row>
                                             <Col span={8}>
-                                                <Avatar size="large" src={u.avatarURL} />
+                                                <Avatar size={80} src={u.avatarURL} />
                                             </Col>
                                             <Col span={16}>
                                                 <h3>Would you Rather</h3>
@@ -50,19 +54,19 @@ class HomepageComponent extends Component {
                                     </Card>
                                 </div>
                             )}
-                        </Skeleton>
+                       
                     </TabPane>
                     <TabPane tab="Answered Questions" key="2">
                         {answered.map(a =>
                             <div key={a.id} style={{ padding: '15px' }}>
                                 <Card title={`${a.name}, asks:`}
-                                    extra={<Button size="small"
+                                    extra={<Button size="small" onClick={() => this.viewResults(a.id)}
                                         className="text-uppercase"
                                         type="primary">View Poll</Button>}
-                                    bordered={false} style={{ width: 500 }}>
+                                    bordered={false} style={{ width: 500, height:200 }}>
                                     <Row>
                                         <Col span={8}>
-                                            <Avatar size="large" src={a.avatarURL} />
+                                            <Avatar size={80} src={a.avatarURL} />
                                         </Col>
                                         <Col span={16}>
                                             <h3>Would you Rather</h3>
@@ -74,6 +78,9 @@ class HomepageComponent extends Component {
                         )}
                     </TabPane>
                 </Tabs>
+
+                )}
+               
             </div>
         )
     }

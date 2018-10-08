@@ -23,6 +23,7 @@ class CreateQuestionFormComponent extends Component {
             if (!err) {
                 const valuesPayload = { ...values, author: loggedInUser.id};
                 this.props.postQuestionsToServer(valuesPayload);
+                this.props.history.push('/homepage')
             } else {
                 message.info('Please complete the form, Sir!');
             }
@@ -41,7 +42,6 @@ class CreateQuestionFormComponent extends Component {
             <div>
                 <Card title="Create New Question" style={{ width: 500 }}>
 
-                    <h5>Fill in the blank</h5>
                     <h3>Would you Rather</h3>
                     <Form onSubmit={this.handleSubmit}>
                         <FormItem>
@@ -66,11 +66,9 @@ class CreateQuestionFormComponent extends Component {
                                 <Input placeholder="Enter Option Two" />
                             )}
                         </FormItem>
-                        <FormItem>
                             <Button htmlType="submit" className="text-uppercase">
                                 Submit
                             </Button>
-                        </FormItem>
                     </Form>
                 </Card>
             </div>

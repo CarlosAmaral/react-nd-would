@@ -28,7 +28,7 @@ export class LeaderboardComponent extends Component {
               bordered={false} style={{ width: 500, heigh: 400 }}>
               <Row>
                 <Col span={8}>
-                  <Avatar size="large" src={u.avatarURL} />
+                  <Avatar size={80} src={u.avatarURL} />
                 </Col>
                 <Col span={8}>
                   <span>Answered Questions: {Object.values(u.answers).length}</span>
