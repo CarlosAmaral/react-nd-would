@@ -25,12 +25,21 @@ body {
 
 .ant-menu-item{
   text-transform: uppercase;
-  font-weight: 200 !important;
+  font-weight: 300 !important;
 }
 
 .ant-menu-item.ant-menu-item-selected{
   background: rgb(50, 49, 78) !important; 
 }
 
+.ant-btn, .ant-btn:hover{
+  color:white !important;
+  font-weight: 300 !important;
+  background-color: #222 !important;
+  border-color: transparent !important;
+}
 
+.primary-color{
+  color:#222;
+}
 

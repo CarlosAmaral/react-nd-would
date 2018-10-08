@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { connect, Provider } from 'react-redux';
+import { connect} from 'react-redux';
 // Components
 import LoginComponent from "./components/LoginComponent";
 import HeaderComponent from "./components/HeaderComponent";

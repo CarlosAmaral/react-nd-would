@@ -18,11 +18,10 @@ export class QuestionDetailsFormComponent extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-
                 const valuesPayload = { ...values, qid: question, authedUser: loggedInUser.id };
                 this.props.saveQuestionAnswerToServer(valuesPayload);
             } else {
-                message.info('Please complete the form, Sir!');
+                message.info('Please complete the form');
             }
         });
     }
@@ -38,7 +37,6 @@ export class QuestionDetailsFormComponent extends Component {
 
         return (
             <div>
-
                 <Card title={`${selectedQuestion.author} asks`}
                     bordered={false} style={{ width: 500 }}>
                     <h3>Would you Rather</h3>
@@ -60,7 +58,7 @@ export class QuestionDetailsFormComponent extends Component {
                                 </RadioGroup>
                             )}
                         </FormItem>
-                        <Button htmlType="submit" type="default" className="text-uppercase">
+                        <Button htmlType="submit" className="text-uppercase">
                             Submit
                         </Button>
                     </Form>

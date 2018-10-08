@@ -41,7 +41,7 @@ class CreateQuestionFormComponent extends Component {
             <div>
                 <Card title="Create New Question" style={{ width: 500 }}>
 
-                    <h5>Complete the question</h5>
+                    <h5>Fill in the blank</h5>
                     <h3>Would you Rather</h3>
                     <Form onSubmit={this.handleSubmit}>
                         <FormItem>
@@ -67,7 +67,7 @@ class CreateQuestionFormComponent extends Component {
                             )}
                         </FormItem>
                         <FormItem>
-                            <Button type="primary" htmlType="submit">
+                            <Button htmlType="submit" className="text-uppercase">
                                 Submit
                             </Button>
                         </FormItem>

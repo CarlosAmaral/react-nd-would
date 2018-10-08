@@ -39,7 +39,7 @@ class LoginComponent extends Component {
         }
         return (
             <div>
-                <Card title="Sign In" bordered={false} style={{ width: 300 }}>
+                <Card title="Sign In | Would You Rather" bordered={false} style={{ width: 300 }}>
 
                     <Form onSubmit={this.handleSubmit}>
                         <FormItem>
@@ -54,7 +54,7 @@ class LoginComponent extends Component {
                                 </Select>
                             )}
                         </FormItem>
-                        <Button type="primary" htmlType="submit" className="login-form-button">
+                        <Button htmlType="submit" className="text-uppercase">
                             Log in</Button>
                     </Form>
                 </Card>

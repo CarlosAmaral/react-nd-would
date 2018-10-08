@@ -35,8 +35,8 @@ export class LeaderboardComponent extends Component {
                   <Divider style={{ margin: '5px 0' }} />
                   <span>Created Questions: {u.questions.length}</span>
                 </Col>
-                <Col span={8}>
-                  Score: {_.sum([Object.values(u.answers).length, u.questions.length])}
+                <Col span={8} className="score-leaderboard">
+                  <span>Score: {_.sum([Object.values(u.answers).length, u.questions.length])}</span>
                 </Col>
               </Row>
             </Card>
