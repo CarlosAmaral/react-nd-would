@@ -8,17 +8,17 @@ import {
 import * as API from '../utils/WouldYouRatherAPI';
 
 export const postQuestionsToServer = (questionPayload) => dispatch => {
-
-    API.saveQuestions(questionPayload)
+    API.saveQuestions(questionPayload);
+    API.getQuestions()
         .then(questions => dispatch(
             {
-                type: POST_QUESTIONS,
+                type: GET_QUESTIONS,
                 payload: questions
             }
-        ))
-
-};
-
+    ))
+   // return getQuestionsFromServer();
+}
+      
 export const getQuestionsFromServer = () => dispatch => {
 
     API.getQuestions()
@@ -31,11 +31,7 @@ export const getQuestionsFromServer = () => dispatch => {
 
 };
 
-export const saveQuestionAnswerToServer = (answerPayload) => dispatch => {
-
-    API.saveQuestionAnswer(answerPayload)
-
-};
+export const saveQuestionAnswerToServer = (answerPayload) => dispatch => API.saveQuestionAnswer(answerPayload);
 
 
 export const getAnsweredAndUnansweredQuestions = (author) => dispatch => {

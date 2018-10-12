@@ -25,7 +25,7 @@ export default function questionsReducer(state = initialState, action) {
         case 'POST_QUESTIONS':
             return {
                 ...state,
-                items: action.payload
+                items:action.payload
             };
         case 'GET_SELECTED_QUESTION':
             return {

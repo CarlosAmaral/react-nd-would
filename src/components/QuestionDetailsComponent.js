@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Radio, Card, Button, Divider, Row, Col, Form, message, Avatar } from 'antd';
-import { saveQuestionAnswerToServer } from "../actions/questionsActions";
+import { saveQuestionAnswerToServer, getQuestionsFromServer } from "../actions/questionsActions";
 import { withRouter, Redirect } from 'react-router-dom';
 import _ from 'lodash';
 
@@ -10,7 +10,6 @@ const RadioGroup = Radio.Group;
 const FormItem = Form.Item;
 
 export class QuestionDetailsFormComponent extends Component {
-
 
     handleSubmit = (e) => {
         const { loggedInUser } = this.props;
@@ -87,6 +86,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = {
+    getQuestionsFromServer,
     saveQuestionAnswerToServer
 }
 

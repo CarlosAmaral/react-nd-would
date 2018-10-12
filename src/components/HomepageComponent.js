@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Tabs } from 'antd';
 import _ from "lodash";
-import { getAnsweredAndUnansweredQuestions } from "../actions/questionsActions";
+import { getAnsweredAndUnansweredQuestions, getQuestionsFromServer } from "../actions/questionsActions";
 import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
