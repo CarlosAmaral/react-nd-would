@@ -7,18 +7,24 @@ import {
 } from './types';
 import * as API from '../utils/WouldYouRatherAPI';
 
-export const postQuestionsToServer = (questionPayload) => dispatch => {
-    API.saveQuestions(questionPayload);
-    API.getQuestions()
-        .then(questions => dispatch(
-            {
-                type: GET_QUESTIONS,
-                payload: questions
-            }
-    ))
-   // return getQuestionsFromServer();
+export const postQuestionsToServer = (questionPayload) => async dispatch => {
+    
+    const saveQuestionRes = await API.saveQuestions(questionPayload);
+
+    if (saveQuestionRes) {
+        API.getQuestions()
+            .then(questions => dispatch(
+                {
+                    type: GET_QUESTIONS,
+                    payload: questions
+                }
+            ))
+    } else {
+        return;
+    }
+
 }
-      
+
 export const getQuestionsFromServer = () => dispatch => {
 
     API.getQuestions()

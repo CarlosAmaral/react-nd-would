@@ -9,5 +9,3 @@ In order to navigate in this app, the user will be be readly prompted to select 
 1) Install NodeJS >= v6
 2) Install yarn or use npm
 3) Run `yarn start` or `npm run start` to boot up the project
-
-s

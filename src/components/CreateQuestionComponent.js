@@ -86,8 +86,7 @@ const mapStateToProps = state => ({
 
 CreateQuestionComponent.propTypes = {
     getUsersFromServer: PropTypes.func.isRequired,
-    postQuestionsToServer: PropTypes.func.isRequired,
-    questions: PropTypes.array.isRequired
+    postQuestionsToServer: PropTypes.func.isRequired
 };
 const mapDispatchToProps = {
     getUsersFromServer, 

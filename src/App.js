@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 // Components
 import LoginComponent from "./components/LoginComponent";
 import HeaderComponent from "./components/HeaderComponent";
@@ -30,7 +30,11 @@ class App extends Component {
         this.props.getQuestionsFromServer();
     }
 
+
     render() {
+
+        const {history} = this.props;
+
         return (
             <div className="App">
                 <Layout className="layout">
@@ -56,7 +60,7 @@ class App extends Component {
                                 <QuestionResultsComponent />
                             )} />
                             <Route render={() => (
-                                <NotFoundComponent />
+                                <NotFoundComponent history={history}/>
                             )} />
                         </Switch>
                     </Content>

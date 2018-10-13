@@ -1,14 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Button } from 'antd';
-import { withRouter } from 'react-router-dom';
 
-export class NotFoundComponent extends Component {
-
-  render() {
-    const { history } = this.props;
-
+const NotFoundComponent = ({history}) => {
     return (
       <div>
         <h1 className="primary-color">
@@ -21,10 +15,8 @@ export class NotFoundComponent extends Component {
       </div>
     )
   }
-}
 
-NotFoundComponent.PropTypes = {
-  history: PropTypes.func
+NotFoundComponent.propTypes = {
+  history: PropTypes.object.isRequired
 }
-
-export default withRouter(NotFoundComponent);
+export default NotFoundComponent;
