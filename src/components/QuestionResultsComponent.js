@@ -6,6 +6,7 @@ import { getQuestionsFromServer } from '../actions/questionsActions';
 import { withRouter, Redirect } from 'react-router-dom';
 import NotFoundComponent from '../components/NotFoundComponent'
 import _ from 'lodash';
+import { Progress } from 'reactstrap';
 
 class QuestionResultsComponent extends Component {
 
@@ -34,9 +35,11 @@ class QuestionResultsComponent extends Component {
                         <Col span={17}>
                             <h2><strong>Results:</strong></h2>
                             <h3>Would you rather {selectedQuestion.optionOne.text}</h3>
+                            <Progress value={selectedQuestion.optionOne.votes.length} max="3" />
                             {selectedQuestion.optionOne.votes.length} out of 3
                             <Divider style={{ margin: '5px auto' }} />
                             <h3>Would you rather {selectedQuestion.optionTwo.text}</h3>
+                            <Progress value={selectedQuestion.optionTwo.votes.length} max="3" />
                             {selectedQuestion.optionTwo.votes.length} out of 3
                         </Col>
                     </Row>
