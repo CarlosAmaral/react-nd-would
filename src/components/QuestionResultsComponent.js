@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Avatar, Divider, Card, Col, Row } from 'antd';
 import { getQuestionsFromServer } from '../actions/questionsActions';
 import { withRouter, Redirect } from 'react-router-dom';
+import NotFoundComponent from '../components/NotFoundComponent'
 import _ from 'lodash';
-
 
 class QuestionResultsComponent extends Component {
 
@@ -15,11 +15,11 @@ class QuestionResultsComponent extends Component {
 
     render() {
 
-        const { selectedQuestion, questionAuthor, loggedInUser } = this.props;
+        const { selectedQuestion, questionAuthor, loggedInUser, history } = this.props;
 
-        if (loggedInUser == null) {
-            return <Redirect to='/' />
-        }
+        if (loggedInUser == null) return <Redirect to='/' />;
+
+        if (_.isUndefined(questionAuthor) || _.isUndefined(selectedQuestion)) return <NotFoundComponent history={history} />;
 
         return (
             <div>
@@ -47,8 +47,14 @@ class QuestionResultsComponent extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    selectedQuestion: state.questions.items[props.match.params.question],
-    questionAuthor: Object.values(state.users.items).find(u => u.id === state.questions.items[props.match.params.question].author),
+    questionAuthor: Object.values(state.users.items).find(u => {
+        if (state.questions.items[props.match.params.question] !== undefined) {
+            return u.id === state.questions.items[props.match.params.question].author
+        } else {
+            return undefined;
+        }
+    }),
+    selectedQuestion: state.questions.items[props.match.params.question] ? state.questions.items[props.match.params.question] : undefined,
     loggedInUser: JSON.parse(localStorage.getItem("loggedInUser"))
 })
 
@@ -57,7 +63,9 @@ const mapDispatchToProps = {
 }
 
 QuestionResultsComponent.propTypes = {
-    getQuestionsFromServer: PropTypes.func.isRequired
+    questionAuthor: PropTypes.any,
+    selectedQuestion: PropTypes.any,
+    loggedInUser: PropTypes.any
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(QuestionResultsComponent));

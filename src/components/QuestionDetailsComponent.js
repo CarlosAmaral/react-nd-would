@@ -5,6 +5,7 @@ import { Radio, Card, Button, Divider, Row, Col, Form, message, Avatar } from 'a
 import { saveQuestionAnswerToServer, getQuestionsFromServer } from "../actions/questionsActions";
 import { withRouter, Redirect } from 'react-router-dom';
 import _ from 'lodash';
+import NotFoundComponent from '../components/NotFoundComponent';
 
 const RadioGroup = Radio.Group;
 const FormItem = Form.Item;
@@ -27,15 +28,16 @@ export class QuestionDetailsFormComponent extends Component {
     }
 
     render() {
-        const {loggedInUser} = this.props;
+        const { loggedInUser } = this.props;
+        const { question } = this.props.match.params;
 
-        if (loggedInUser == null) {
-            return <Redirect to='/' />
-        }
+        if (loggedInUser == null) return <Redirect to='/' />
 
         const { getFieldDecorator } = this.props.form;
-        const { selectedQuestion, questionAuthor } = this.props;
+        const { selectedQuestion, questionAuthor, history } = this.props;
 
+        if (_.isUndefined(questionAuthor) || _.isUndefined(selectedQuestion)) return <NotFoundComponent history={history} />
+        
         return (
             <div>
                 <Card title={`${questionAuthor.name} asks`}
@@ -67,7 +69,7 @@ export class QuestionDetailsFormComponent extends Component {
                                 </FormItem>
                                 <Button htmlType="submit" className="text-uppercase">
                                     Submit
-                        </Button>
+                                    </Button>
                             </Form>
                         </Col>
                     </Row>
@@ -82,8 +84,14 @@ const QuestionDetailsComponent = Form.create()(QuestionDetailsFormComponent);
 
 const mapStateToProps = (state, props) => ({
     loggedInUser: JSON.parse(localStorage.getItem("loggedInUser")),
-    questionAuthor: Object.values(state.users.items).find(u => u.id === state.questions.items[props.match.params.question].author),
-    selectedQuestion: state.questions.items[props.match.params.question]
+    questionAuthor: Object.values(state.users.items).find(u => {
+        if (state.questions.items[props.match.params.question] !== undefined) {
+            return u.id === state.questions.items[props.match.params.question].author
+        } else {
+            return undefined;
+        }
+    }),
+    selectedQuestion: state.questions.items[props.match.params.question] ? state.questions.items[props.match.params.question] : undefined
 });
 
 const mapDispatchToProps = {

@@ -38,9 +38,9 @@ class HeaderComponent extends Component {
                         <Link to='/leaderboard'>Leader Board</Link>
                     </Menu.Item>
 
-                    {!_.isEmpty(loggedInUser) && <Menu.Item selectable={false} key="4">Hello, {loggedInUser.name}</Menu.Item>}
+                    {!_.isNil(loggedInUser) && <Menu.Item selectable={false} key="4">Hello, {loggedInUser.name}</Menu.Item>}
 
-                    {!_.isEmpty(loggedInUser) && <Menu.Item key="5" onClick={this.logOutUser}>
+                    {!_.isNil(loggedInUser) && <Menu.Item key="5" onClick={this.logOutUser}>
                         Logout</Menu.Item>}
                 </Menu>
             </div>
@@ -54,7 +54,7 @@ const mapDispatchToProps = {
 };
 
 HeaderComponent.propTypes = {
-    loggedInUser: PropTypes.object.isRequired
+    loggedInUser: PropTypes.object
 };
 
 const mapStateToProps = state => ({

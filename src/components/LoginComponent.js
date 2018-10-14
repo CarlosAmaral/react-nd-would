@@ -10,10 +10,10 @@ const Option = Select.Option;
 const FormItem = Form.Item;
 
 class LoginComponent extends Component {
+    
     componentDidMount() {
         this.props.getUsersFromServer();
     }
-
 
     handleSubmit = (e) => {
         const { users } = this.props;
@@ -32,7 +32,7 @@ class LoginComponent extends Component {
         const { getFieldDecorator } = this.props.form;
 
 
-        if (loggedInUser != null) {
+        if (loggedInUser != null && this.props.history.location.pathname === "/") {
             return <Redirect to="/homepage" />
         }
         return (
@@ -65,7 +65,7 @@ const LoginFormComponent = Form.create()(LoginComponent);
 
 LoginComponent.propTypes = {
     getUsersFromServer: PropTypes.func.isRequired,
-    logInUser: PropTypes.func.isRequired,
+    logInUser: PropTypes.any,
     users: PropTypes.array.isRequired
 };
 

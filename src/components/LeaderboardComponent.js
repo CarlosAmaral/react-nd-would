@@ -14,11 +14,9 @@ export class LeaderboardComponent extends Component {
 
   render() {
 
-    const { users } = this.props;
+    const { users, loggedInUser } = this.props;
 
-    if (_.isNil(this.props.loggedInUser)) {
-      return <Redirect to='/' />
-    }
+    if(loggedInUser == null) return <Redirect to='/' />;
 
     return (
       <div>

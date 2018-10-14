@@ -33,7 +33,7 @@ class App extends Component {
 
     render() {
 
-        const {history} = this.props;
+        const { history } = this.props;
 
         return (
             <div className="App">
@@ -42,8 +42,8 @@ class App extends Component {
                         <HeaderComponent />
                     </Header>
                     <Content className="yield-content" style={{ margin: 'auto', padding: '50px' }}>
-                        <Switch>
-                            <Route path='/' component={LoginComponent} exact={true} />
+                        <Switch> 
+                            <Route exact path='/' component={LoginComponent} />
 
                             <Route exact path='/homepage' component={HomepageComponent} />
 
@@ -60,7 +60,7 @@ class App extends Component {
                                 <QuestionResultsComponent />
                             )} />
                             <Route render={() => (
-                                <NotFoundComponent history={history}/>
+                                <NotFoundComponent history={history} />
                             )} />
                         </Switch>
                     </Content>

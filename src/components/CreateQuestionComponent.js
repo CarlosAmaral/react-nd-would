@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { postQuestionsToServer } from "../actions/questionsActions";
 import { getUsersFromServer } from "../actions/usersActions";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 
 const FormItem = Form.Item;
@@ -17,11 +17,11 @@ class CreateQuestionFormComponent extends Component {
      * @param e
      */
     handleSubmit = (e) => {
-        const {loggedInUser} = this.props;
+        const { loggedInUser } = this.props;
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                const valuesPayload = { ...values, author: loggedInUser.id};
+                const valuesPayload = { ...values, author: loggedInUser.id };
                 this.props.postQuestionsToServer(valuesPayload);
                 this.props.history.push('/homepage')
             } else {
@@ -32,12 +32,10 @@ class CreateQuestionFormComponent extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
+        const { loggedInUser } = this.props;
 
-        //Replace if statement with global function or shared component
-        if (_.isEmpty(this.props.loggedInUser)) {
-            return <Redirect to='/' />
-        }
-        
+        if (loggedInUser == null) return <Redirect to='/' />;
+
         return (
             <div>
                 <Card title="Create New Question" style={{ width: 500 }}>
@@ -66,8 +64,8 @@ class CreateQuestionFormComponent extends Component {
                                 <Input placeholder="Enter Option Two" />
                             )}
                         </FormItem>
-                            <Button htmlType="submit" className="text-uppercase">
-                                Submit
+                        <Button htmlType="submit" className="text-uppercase">
+                            Submit
                             </Button>
                     </Form>
                 </Card>
@@ -80,18 +78,16 @@ class CreateQuestionFormComponent extends Component {
 const CreateQuestionComponent = Form.create()(CreateQuestionFormComponent);
 
 
+const mapDispatchToProps = {
+    postQuestionsToServer
+};
 const mapStateToProps = state => ({
-    loggedInUser: state.users.loggedInUser,
+    loggedInUser: JSON.parse(localStorage.getItem("loggedInUser")),
 });
 
 CreateQuestionComponent.propTypes = {
-    getUsersFromServer: PropTypes.func.isRequired,
-    postQuestionsToServer: PropTypes.func.isRequired
+    loggedInUser: PropTypes.any
 };
-const mapDispatchToProps = {
-    getUsersFromServer, 
-    postQuestionsToServer 
-  }
-  
+
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateQuestionComponent));

@@ -9,19 +9,19 @@ const initialState = {
 
 export default function usersReducer(state = initialState, action) {
     switch (action.type) {
-        case 'GET_USERS':
+        case GET_USERS:
             return {
                 ...state,
                 items: action.payload
             };
 
-        case 'LOGIN_USER':
+        case LOGIN_USER:
             localStorage.setItem("loggedInUser", JSON.stringify(action.payload));
             return {
                 ...state,
                 loggedInUser: action.payload
             };
-        case 'LOGOUT_USER':
+        case LOGOUT_USER:
             localStorage.setItem("loggedInUser", null);
             return {
                 ...state,
