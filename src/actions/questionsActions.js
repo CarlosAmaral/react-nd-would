@@ -8,15 +8,15 @@ import {
 import * as API from '../utils/WouldYouRatherAPI';
 
 export const postQuestionsToServer = (questionPayload) => async dispatch => {
-    
+
     const saveQuestionRes = await API.saveQuestions(questionPayload);
 
     if (saveQuestionRes) {
         API.getQuestions()
-            .then(questions => dispatch(
+            .then(q => dispatch(
                 {
                     type: GET_QUESTIONS,
-                    payload: questions
+                    payload: q
                 }
             ))
     } else {
@@ -28,10 +28,10 @@ export const postQuestionsToServer = (questionPayload) => async dispatch => {
 export const getQuestionsFromServer = () => dispatch => {
 
     API.getQuestions()
-        .then(questions => dispatch(
+        .then(q => dispatch(
             {
                 type: GET_QUESTIONS,
-                payload: questions
+                payload: q
             }
         ))
 
@@ -47,17 +47,17 @@ export const getAnsweredAndUnansweredQuestions = (author) => dispatch => {
         API.getUsers()
     ];
 
-    Promise.all(promises).then(answered => dispatch({
+    Promise.all(promises).then(q => dispatch({
         type: GET_ANSWERED_AND_UNANSWERED_QUESTIONS,
-        payload: answered,
+        payload: q,
         param: author
     }));
 };
 
 
-export const getSelectedQuestion = (questions, id) => dispatch => dispatch({
+export const getSelectedQuestion = (q, id) => dispatch => dispatch({
     type: GET_SELECTED_QUESTION,
-    payload: questions,
+    payload: q,
     id: id
 })
 

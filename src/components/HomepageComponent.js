@@ -87,8 +87,8 @@ class HomepageComponent extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    answered: Object.values(state.questions.answered),
-    unanswered: Object.values(state.questions.unanswered),
+    answered: Object.values(state.questions.answered).sort((a,b) => b.timestamp - a.timestamp),
+    unanswered: Object.values(state.questions.unanswered).sort((a,b) => b.timestamp - a.timestamp),
     loggedInUser: state.users.loggedInUser
 });
 

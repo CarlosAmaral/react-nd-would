@@ -47,7 +47,11 @@ export class LeaderboardComponent extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  users: Object.values(state.users.items),
+  users: Object.values(state.users.items).sort((a, b) => {
+    a = _.sum([Object.values(a.answers).length, a.questions.length])
+    b = _.sum([Object.values(b.answers).length, b.questions.length])
+    return b - a;
+  }),
   loggedInUser: state.users.loggedInUser
 
 });

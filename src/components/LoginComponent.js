@@ -22,8 +22,6 @@ class LoginComponent extends Component {
             if (!err) {
                 const userObj = users.find(k => k.name === values.chosenUser);
                 this.props.logInUser(userObj);
-
-
             }
         });
     }
