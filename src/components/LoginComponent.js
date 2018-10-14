@@ -32,7 +32,7 @@ class LoginComponent extends Component {
         const { getFieldDecorator } = this.props.form;
 
 
-        if (!_.isEmpty(loggedInUser)) {
+        if (loggedInUser != null) {
             return <Redirect to="/homepage" />
         }
         return (
@@ -72,7 +72,7 @@ LoginComponent.propTypes = {
 
 const mapStateToProps = state => ({
     users: Object.values(state.users.items),
-    loggedInUser: state.users.loggedInUser
+    loggedInUser: JSON.parse(localStorage.getItem("loggedInUser"))
 });
 
 export default connect(mapStateToProps, { getUsersFromServer, logInUser })(LoginFormComponent);

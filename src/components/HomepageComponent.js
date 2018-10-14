@@ -22,7 +22,7 @@ class HomepageComponent extends Component {
 
     render() {
 
-        if (_.isEmpty(this.props.loggedInUser)) {
+        if (this.props.loggedInUser == null) {
             return <Redirect to='/' />
         }
 
@@ -89,7 +89,7 @@ class HomepageComponent extends Component {
 const mapStateToProps = (state) => ({
     answered: Object.values(state.questions.answered).sort((a,b) => b.timestamp - a.timestamp),
     unanswered: Object.values(state.questions.unanswered).sort((a,b) => b.timestamp - a.timestamp),
-    loggedInUser: state.users.loggedInUser
+    loggedInUser: JSON.parse(localStorage.getItem("loggedInUser"))
 });
 
 

@@ -16,7 +16,7 @@ export class LeaderboardComponent extends Component {
 
     const { users } = this.props;
 
-    if (_.isEmpty(this.props.loggedInUser)) {
+    if (_.isNil(this.props.loggedInUser)) {
       return <Redirect to='/' />
     }
 
@@ -52,7 +52,7 @@ const mapStateToProps = (state) => ({
     b = _.sum([Object.values(b.answers).length, b.questions.length])
     return b - a;
   }),
-  loggedInUser: state.users.loggedInUser
+  loggedInUser: JSON.parse(localStorage.getItem("loggedInUser"))
 
 });
 

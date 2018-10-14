@@ -15,9 +15,9 @@ class QuestionResultsComponent extends Component {
 
     render() {
 
-        const { selectedQuestion, questionAuthor } = this.props;
+        const { selectedQuestion, questionAuthor, loggedInUser } = this.props;
 
-        if (_.isEmpty(this.props.loggedInUser)) {
+        if (loggedInUser == null) {
             return <Redirect to='/' />
         }
 
@@ -30,7 +30,7 @@ class QuestionResultsComponent extends Component {
                         <Col span={6}>
                             <Avatar src={questionAuthor.avatarURL} size={80} />
                         </Col>
-                        <Col span={1}><Divider type="vertical" style={{ height:'150px'}} /></Col>
+                        <Col span={1}><Divider type="vertical" style={{ height: '150px' }} /></Col>
                         <Col span={17}>
                             <h2><strong>Results:</strong></h2>
                             <h3>Would you rather {selectedQuestion.optionOne.text}</h3>
@@ -49,7 +49,7 @@ class QuestionResultsComponent extends Component {
 const mapStateToProps = (state, props) => ({
     selectedQuestion: state.questions.items[props.match.params.question],
     questionAuthor: Object.values(state.users.items).find(u => u.id === state.questions.items[props.match.params.question].author),
-    loggedInUser: state.users.loggedInUser
+    loggedInUser: JSON.parse(localStorage.getItem("loggedInUser"))
 })
 
 const mapDispatchToProps = {

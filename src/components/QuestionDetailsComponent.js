@@ -27,8 +27,9 @@ export class QuestionDetailsFormComponent extends Component {
     }
 
     render() {
+        const {loggedInUser} = this.props;
 
-        if (_.isEmpty(this.props.loggedInUser)) {
+        if (loggedInUser == null) {
             return <Redirect to='/' />
         }
 
@@ -80,7 +81,7 @@ export class QuestionDetailsFormComponent extends Component {
 const QuestionDetailsComponent = Form.create()(QuestionDetailsFormComponent);
 
 const mapStateToProps = (state, props) => ({
-    loggedInUser: state.users.loggedInUser,
+    loggedInUser: JSON.parse(localStorage.getItem("loggedInUser")),
     questionAuthor: Object.values(state.users.items).find(u => u.id === state.questions.items[props.match.params.question].author),
     selectedQuestion: state.questions.items[props.match.params.question]
 });

@@ -16,7 +16,7 @@ class HeaderComponent extends Component {
 
         const {loggedInUser} = this.props;
         const {pathname} = this.props.history.location;
-        const disabledMenuItem = _.isEmpty(loggedInUser);
+        const disabledMenuItem = this.props.loggedInUser === null;
 
 
         return (
@@ -58,7 +58,7 @@ HeaderComponent.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    loggedInUser: state.users.loggedInUser
+    loggedInUser: JSON.parse(localStorage.getItem("loggedInUser"))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderComponent));
