@@ -28,12 +28,16 @@ class LoginComponent extends Component {
 
 
     render() {
-        const { users, loggedInUser } = this.props;
+        const { users, loggedInUser, previousRoute } = this.props;
         const { getFieldDecorator } = this.props.form;
 
 
         if (loggedInUser != null && this.props.history.location.pathname === "/") {
-            return <Redirect to="/homepage" />
+        //if (loggedInUser != null) {
+            return <Redirect to={{
+                pathname: localStorage.getItem("previousRoute"),
+                //state: { referrer: currentLocation }
+              }}/>
         }
         return (
             <div>

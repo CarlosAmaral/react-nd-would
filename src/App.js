@@ -35,6 +35,9 @@ class App extends Component {
 
         const { history } = this.props;
 
+        if(this.props.location.pathname !== this.props.match.path){
+            localStorage.setItem("previousRoute", this.props.location.pathname)
+        }
         return (
             <div className="App">
                 <Layout className="layout">
@@ -43,8 +46,11 @@ class App extends Component {
                     </Header>
                     <Content className="yield-content" style={{ margin: 'auto', padding: '50px' }}>
                         <Switch> 
-                            <Route exact path='/' component={LoginComponent} />
-
+                        
+                            <Route exact path='/' component={LoginComponent} render={() => (
+                                   <LoginComponent/>
+                            )}/>
+                            
                             <Route exact path='/homepage' component={HomepageComponent} />
 
                             <Route exact path='/add' render={() => (
